@@ -37,6 +37,76 @@
     }
 
 
+    $(".about_con").hide();
+    $(".about_title").on('click', function() {
+        $(".about_con").show(500);
+    });
+
+
+    var nav_bar_on = true;
+    $(window).scroll(function(event) {
+        $("#nav_con").hide(1000);
+        nav_bar_on = true;
+        $("#nav_bar").css({
+            'background-position': '0 0'
+        });
+        getTop();
+    });
+
+    function getTop() {
+        var top = $(window).scrollTop();
+        if (top > 200) {
+            $("#nav").css({
+                'display': 'block'
+            });
+        } else {
+            $("#nav").css({
+                'display': 'none'
+            });
+        }
+    }
+    $("#nav_bar").click(function() {
+        if (nav_bar_on) {
+            nav_bar_on = false;
+            $("#nav_bar").css({
+                'background-position': '-68px 0'
+            });
+        } else {
+            nav_bar_on = true;
+            $("#nav_bar").css({
+                'background-position': '0 0'
+            });
+        }
+        $("#nav_con").toggle(1000);
+    });
+
+    var join_job = true;
+    $(".join_job").hide();
+    $(".join_box_btn").on("click", function() {
+        if (join_job) {
+            join_job = false;
+            $(".join_box_btn img").css({
+                'margin-top': '-62px'
+            });
+            $(".join_job").show(1000);
+        } else {
+            join_job = true;
+            $(".join_box_btn img").css({
+                'margin-top': '0'
+            });
+            $(".join_job").hide(1000);
+        }
+    });
+
+    $(".join_job a").each(function() {
+        $(this).on('click', function() {
+            $(".jobs_click_show").show(500);
+        });
+    });
+
+    $("#jobs_click_close").on('click', function() {
+        $(".jobs_click_show").hide(500);
+    });
 
 
 
