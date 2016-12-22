@@ -36,6 +36,11 @@
         })
     }
 
+    var inputI = $(".index_box7_left").find("input");
+    $(inputI.get(0)).attr({ "placeholder": "您的姓名" });
+    $(inputI.get(1)).attr({ "placeholder": "电话" });
+    $(inputI.get(2)).attr({ "placeholder": "QQ/微信/邮箱" });
+    $($(".index_box7_left").find("textarea").get(0)).attr({ "placeholder": "设计内容详细补充说明" });
 
     $(".about_con").hide();
     $(".about_title").on('click', function() {
@@ -107,6 +112,95 @@
     $("#jobs_click_close").on('click', function() {
         $(".jobs_click_show").hide(500);
     });
+
+
+
+
+    $(".case_box2_con").each(function() {
+        var _this = $(this);
+        if (_this.find("li").length != 0) {
+
+            var thisLiNum = Math.ceil(_this.find("li").length / 12);
+            var thisNum = 1;
+
+            if (_this.find("li").length > 12) {
+
+                _this.find("li").each(function() {
+                    $(this).css("display", "none");
+                });
+                for (var i = 0; i < 12; i++) {
+                    $(_this.find("li")[i]).css("display", "block");
+                }
+
+            }
+
+
+            var firstPath = $(_this.find("li").get(0)).find("img")[0].src;
+            _this.find("p").append("<img src=''/>");
+            $(_this.find("p").find("img")[0]).attr('src', firstPath);
+
+            _this.find("li").each(function(index, obj) {
+                $(obj).on("click", function() {
+                    var path = $(obj).find("img")[0].src;
+                    $(_this.find("p").find("img")[0]).attr('src', path);
+                });
+            });
+
+            _this.find(".prevLeft").on("click", function() {
+                if (thisNum == 1) {
+                    alert("没有更多信息了！");
+                    return;
+                } else {
+                    thisNum--;
+                    _this.find("li").each(function() {
+                        $(this).css("display", "none");
+                    });
+                    var firstNum = (thisNum - 1) * 12;
+                    var lastNum = thisNum * 12;
+                    for (var i = firstNum; i < lastNum; i++) {
+                        $(_this.find("li")[i]).css("display", "block");
+                    }
+                }
+            });
+
+            _this.find(".nextRight").on("click", function() {
+                if (thisNum == thisLiNum) {
+                    alert("没有更多信息了！");
+                    return;
+                } else {
+                    thisNum++;
+                    _this.find("li").each(function() {
+                        $(this).css("display", "none");
+                    });
+                    var firstNum = (thisNum - 1) * 12;
+                    var lastNum = thisNum * 12;
+                    for (var i = firstNum; i < lastNum; i++) {
+                        $(_this.find("li")[i]).css("display", "block");
+                    }
+                }
+            });
+
+
+        } else {
+            _this.find(".case_page").css("display", "none");
+        }
+    });
+
+    jQuery(".slideTxtBox").slide({
+        trigger: "click"
+    });
+
+    $(".case_box_con").find("li").each(function() {
+
+        $(this).on("click", function() {
+
+            var thisText = $(this).find("span").text();
+
+            $(".case_box_con").find(".case_title h2").text(thisText);
+
+        });
+    });
+
 
 
 

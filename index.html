@@ -12,10 +12,10 @@
 <body>
     <header id="header">
         <div class="content">
-            <div class="logo">
+            <div class="logo wow bounceInLeft">
                 <a href="index.html"><img src="images/logo.png" alt=""></a>
             </div>
-            <nav class="nav">
+            <nav class="nav wow bounceInDown">
                 <ul>
                     <li>
                         <a href="index.html">
@@ -316,14 +316,14 @@
     </div>
     <div class="index_box7">
         <div class="content">
-            <div class="index_box7_left">
+            <div class="index_box7_left wow bounceInLeft">
                 <form>
                     <ul>
                         <li>
-                            <input type="text" placeholder="您的姓名">
+                            <input type="text" placeholder="您的姓名"><em><img src="images/input.png" alt=""></em>
                         </li>
                         <li>
-                            <input type="text" placeholder="电话">
+                            <input type="text" placeholder="电话"><em><img src="images/input.png" alt=""></em>
                         </li>
                         <li>
                             <input type="text" placeholder="QQ/微信/邮箱">
@@ -333,11 +333,14 @@
                         </li>
                     </ul>
                     <div class="code">
-
+                        <div class="code_con">
+                            <input type="text" id="code" name="code" size="8" class="input-text"><span title="点击更换验证码">{form::checkcode('code_img', '4', '14', 84, 40)}</span>
+                            <input type="submit" {if $no_allowed} disabled="" {/if} name="dosubmit" id="dosubmit" value=" 提交 ">
+                        </div>
                     </div>
                 </form>
             </div>
-            <div class="index_box7_right">
+            <div class="index_box7_right wow bounceInRight">
                 <h2>Hi,are you ready?</h2>
                 <p>准备好开始了吗?</p>
                 <p>那就与我们取得联系吧!</p>
@@ -348,11 +351,11 @@
     </div>
     <footer id="footer">
         <div class="content">
-            <div class="map">
+            <div class="map wow bounceInLeft">
                 <img src="images/bottom_map.png" alt="">
             </div>
             <div class="right">
-                <div class="right_top">
+                <div class="right_top wow bounceInDown">
                     <ul class="row">
                         <li class="col-md-3">
                             <h2>品牌介绍</h2>
@@ -377,7 +380,7 @@
                         </li>
                     </ul>
                 </div>
-                <div class="right_bottom">
+                <div class="right_bottom wow bounceInUp">
                     <div class="right_bottom_left">
                         <p>地址：人民南路四段曼哈顿一期1432</p>
                         <p>电话：028-61504816 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1800000000</p>
